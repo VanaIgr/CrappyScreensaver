@@ -1,3 +1,12 @@
+#![allow(non_snake_case)]
+#![allow(unused_imports)]
+#![allow(unused_unsafe)]
+#![allow(dead_code)]
+#![allow(non_upper_case_globals)]
+#![allow(unused_parens)]
+#![allow(unused_variables)]
+#![deny(warnings)]
+
 extern crate glfw;
 extern crate gl;
 extern crate image;
@@ -389,7 +398,10 @@ fn addShaderFromString(text: &String, shaderType: u32) -> u32 {
         let mut msgVec = vec![0 as u8; length as usize];
         unsafe{ gl::GetShaderInfoLog(id, length, &mut length, msgVec.as_mut_ptr() as *mut i8); }
         print!("Error: ");
-        std::io::Write::write(&mut std::io::stdout(), msgVec.as_slice());
+        #[allow(unused_must_use)] //doesn't work
+        std::io::Write::write(&mut std::io::stdout(), msgVec.as_slice()).ok(/*
+            optional ok, just to ignore warning because idk where to put #[allow(unused_must_use)]
+        */);
     }
 
     return id;
