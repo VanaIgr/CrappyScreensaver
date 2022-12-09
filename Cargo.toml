@@ -1,0 +1,14 @@
+[package]
+name = "screensaver"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+gl = "*"
+image = "*"
+static_assertions = "*"
+bytebuffer = "*"
+rand = "*"
+
+[dependencies.glfw]
+version = "*"
